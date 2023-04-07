@@ -1,0 +1,66 @@
+server:
+  port: 5555
+
+spring:
+  application:
+    name: newsgateway
+
+  cloud:
+    gateway:
+      routes:
+        - id: articleroute
+          uri: lb://ARTICLESERVICE # will be routed to the articleservice from loadbalancer
+          predicates:
+            - Path=/api/articleservice/**  # ** heißt kann was beliebig hinter kommen bzgl pfad
+          filters:
+            - RewritePath=/api/articleservice(?<segment>.*), $\{segment}
+            - name: Retry
+              args:
+                retries: 3 # 4 Retries 1 default + 3 explicit -> means in case of quick error nothing happens
+                statues: NOT_FOUND, INTERNAL_SERVER_ERROR
+                methods: DELETE, GET, HEAD, OPTIONS, PATCH, POST, PUT, TRACE
+        - id: statisticsroute
+          uri: lb://STATISTICSSERVICE # will be routed to the statisticsservice from loadbalancer
+          predicates:
+            - Path=/api/statistics/**  # ** heißt kann was beliebig hinter kommen bzgl pfad
+          filters:
+            - RewritePath=/api/statistics(?<segment>.*), $\{segment}
+            - name: Retry
+              args:
+                retries: 3 # 4 Retries 1 default + 3 explicit -> means in case of quick error nothing happens
+                statues: NOT_FOUND, INTERNAL_SERVER_ERROR
+                methods: DELETE, GET, HEAD, OPTIONS, PATCH, POST, PUT, TRACE
+        - id: paymentsservice
+          uri: lb://PAYMENTSSERVICE # will be routed to the paymentservice from the loadbalancer
+          predicates:
+            - Path=/api/paymentsservice/**  # ** heißt kann was beliebig hinter kommen bzgl pfad
+          filters:
+            - RewritePath=/api/paymentsservice(?<segment>.*), $\{segment}
+            - name: Retry
+              args:
+                retries: 3 # 4 Retries 1 default + 3 explicit -> means in case of quick error nothing happens
+                statues: NOT_FOUND, INTERNAL_SERVER_ERROR
+                methods: DELETE, GET, HEAD, OPTIONS, PATCH, POST, PUT, TRACE
+
+      ## fur each path one entry like this beginning from id until methods
+      globalcors:
+        cors-configurations:
+          "[/**]":
+            allowdOrigins: "*"
+            allowedHeaders: "*"
+            allowedMethods: "*"
+
+eureka:
+  client:
+    register-with-eureka: false # soll nicht den service aufrufen
+    registry-fetch-interval-seconds: 5
+    #fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: gateway

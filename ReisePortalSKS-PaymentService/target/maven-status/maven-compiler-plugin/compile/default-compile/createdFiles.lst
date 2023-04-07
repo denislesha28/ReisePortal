@@ -1,0 +1,11 @@
+at\technikumwien\entities\Author.class
+at\technikumwien\events\NewsEvent.class
+at\technikumwien\enums\Sex.class
+at\technikumwien\MainApp.class
+at\technikumwien\NewsResource.class
+at\technikumwien\events\StreamConfig.class
+at\technikumwien\repositories\ServiceRepository.class
+at\technikumwien\exceptions\EmptyResultDataAccessExceptionAdvice.class
+at\technikumwien\Distributor.class
+at\technikumwien\events\News.class
+at\technikumwien\repositories\CustomJpaRepository.class

@@ -1,0 +1,936 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>5</zoom_level>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>625</x>
+      <y>730</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;config file&gt;&gt;
+application.yml
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>575</x>
+      <y>820</y>
+      <w>210</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>bg=#E6FFE6
+server:
+  port: 8761
+
+spring:
+  application:
+    name: registry
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka  
+  server:
+    use-read-only-response-cache: false
+    renewal-percent-threshold: 0.85 
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>675</x>
+      <y>755</y>
+      <w>15</w>
+      <h>75</h>
+    </coordinates>
+    <panel_attributes>lt=.
+group=1</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>670</x>
+      <y>645</y>
+      <w>25</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=[8761]-
+group=1</panel_attributes>
+    <additional_attributes>20.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>625</x>
+      <y>690</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>symbol=component
+Eureka Server
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLDeployment</id>
+    <coordinates>
+      <x>615</x>
+      <y>650</y>
+      <w>135</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;registry&gt;&gt;
+Registry
+
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>895</x>
+      <y>815</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;config file&gt;&gt;
+application.yml
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLDeployment</id>
+    <coordinates>
+      <x>885</x>
+      <y>735</y>
+      <w>135</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;service&gt;&gt;
+PaymentService
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1065</x>
+      <y>725</y>
+      <w>310</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>bg=#E6FFE6
+server:
+  port: 0   
+spring:
+ 
+  application:
+    name: paymentservice
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka #find eureka registry server
+
+  instance:
+    instance-id: ${spring.application.name}:${random.value} #notwending wenn mehere Service auf selben Rechner gestartet werden
+    prefer-ip-address: true
+
+
+
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1000</x>
+      <y>825</y>
+      <w>75</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=.
+group=2</panel_attributes>
+    <additional_attributes>130.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>535</x>
+      <y>250</y>
+      <w>50</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>bg=#F5F5F5
+&lt;&lt;enum&gt;&gt;
+SEX
+--
+FEMALE
+INTERSEX
+MALE
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>430</x>
+      <y>355</y>
+      <w>15</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>945</x>
+      <y>730</y>
+      <w>15</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>895</x>
+      <y>775</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>symbol=component
+Eureka Client
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLDeployment</id>
+    <coordinates>
+      <x>435</x>
+      <y>35</y>
+      <w>395</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;system&gt;&gt;
+MySQL
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>445</x>
+      <y>75</y>
+      <w>120</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lw=2
+StatisticsService
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1105</x>
+      <y>550</y>
+      <w>310</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>bg=#E6FFE6
+server:
+  port: 0   # uses random port since it connects to eureka registry anyways
+  application:
+    name: articleservice
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka #find eureka registry server
+
+  instance:
+    instance-id: ${spring.application.name}:${random.value} #notwending wenn mehere Service auf selben Rechner gestartet werden
+    prefer-ip-address: true
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>950</x>
+      <y>620</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;config file&gt;&gt;
+application.yml
+group=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1055</x>
+      <y>625</y>
+      <w>60</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>lt=.
+</panel_attributes>
+    <additional_attributes>100.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>390</x>
+      <y>0</y>
+      <w>15</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1000</x>
+      <y>535</y>
+      <w>15</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>950</x>
+      <y>580</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>symbol=component
+Eureka Client
+group=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLDeployment</id>
+    <coordinates>
+      <x>940</x>
+      <y>540</y>
+      <w>135</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;service&gt;&gt;
+ArticleService
+group=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>810</x>
+      <y>180</y>
+      <w>320</w>
+      <h>370</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;90.0;20.0;620.0;170.0;620.0;650.0;530.0;720.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>295</x>
+      <y>840</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;config file&gt;&gt;
+application.yml
+group=5</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>295</x>
+      <y>800</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>symbol=component
+Eureka Client
+group=5</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLDeployment</id>
+    <coordinates>
+      <x>285</x>
+      <y>760</y>
+      <w>135</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;service&gt;&gt;
+StatisticsService
+group=5</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>150</x>
+      <y>880</y>
+      <w>310</w>
+      <h>115</h>
+    </coordinates>
+    <panel_attributes>bg=#E6FFE6
+server:
+  port: 0   
+
+  application:
+    name: statisticsservice
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${random.value}
+    prefer-ip-address: true
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>145</x>
+      <y>190</y>
+      <w>340</w>
+      <h>645</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>660.0;10.0;660.0;350.0;10.0;350.0;10.0;1270.0;280.0;1270.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>745</x>
+      <y>605</y>
+      <w>205</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>fg=#FF0000
+lt=&lt;&lt;&lt;-
+*register service instance*</panel_attributes>
+    <additional_attributes>10.0;160.0;390.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>745</x>
+      <y>715</y>
+      <w>150</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>fg=#FF0000
+lt=&lt;&lt;&lt;-
+*register service instance*</panel_attributes>
+    <additional_attributes>10.0;10.0;280.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>410</x>
+      <y>750</y>
+      <w>215</w>
+      <h>85</h>
+    </coordinates>
+    <panel_attributes>fg=#FF0000
+lt=&lt;&lt;&lt;-
+*register service instance*</panel_attributes>
+    <additional_attributes>410.0;10.0;10.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>990</x>
+      <y>530</y>
+      <w>35</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=[random]-</panel_attributes>
+    <additional_attributes>30.0;10.0;30.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>330</x>
+      <y>520</y>
+      <w>35</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=[random]-</panel_attributes>
+    <additional_attributes>30.0;10.0;30.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>185</x>
+      <y>405</y>
+      <w>370</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>bg=#E6FFE6
+  cloud:
+    gateway:
+      routes:
+        - id: articleroute
+          uri: lb://ARTICLESERVICE 
+          predicates:
+            - Path=/api/articleservice/**  
+          filters:
+            - RewritePath=/api/articleservice(?&lt;segment&gt;.*), $\{segment}
+            - name: Retry
+              args:
+                retries: 3 
+                statues: NOT_FOUND, INTERNAL_SERVER_ERROR
+                methods: DELETE, GET, HEAD, OPTIONS, PATCH, POST, PUT, TRACE
+        - id: statisticsroute
+          uri: lb://STATISTICSSERVICE 
+          predicates:
+            - Path=/api/statistics/**  
+          filters:
+            - RewritePath=/api/statistics(?&lt;segment&gt;.*), $\{segment}
+            - name: Retry
+              args:
+                retries: 3 
+                statues: NOT_FOUND, INTERNAL_SERVER_ERROR
+                methods: DELETE, GET, HEAD, OPTIONS, PATCH, POST, PUT, TRACE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>615</x>
+      <y>545</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;config file&gt;&gt;
+application.yml
+group=6</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>615</x>
+      <y>450</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>symbol=component
+Spring Cloud
+LoadBalancer
+group=6</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>615</x>
+      <y>505</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>symbol=component
+Eureka Client
+group=6</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>665</x>
+      <y>475</y>
+      <w>35</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;uses&gt;&gt;
+group=6</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>660</x>
+      <y>350</y>
+      <w>25</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=[5555]-
+group=6</panel_attributes>
+    <additional_attributes>20.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>615</x>
+      <y>395</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>symbol=component
+Spring Cloud
+Gateway
+group=6</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>665</x>
+      <y>420</y>
+      <w>35</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;uses&gt;&gt;
+group=6</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLDeployment</id>
+    <coordinates>
+      <x>605</x>
+      <y>355</y>
+      <w>135</w>
+      <h>230</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;gateway&gt;&gt;
+Gateway
+group=6</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLDeployment</id>
+    <coordinates>
+      <x>885</x>
+      <y>390</y>
+      <w>135</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;client&gt;&gt;
+External Client</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>735</x>
+      <y>405</y>
+      <w>160</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>layer=2
+fg=#FF0000
+lt=&lt;&lt;&lt;-
+*call services via gateway*
+http://localhost:5555/api/newslist/article
+</panel_attributes>
+    <additional_attributes>10.0;20.0;300.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>335</x>
+      <y>460</y>
+      <w>290</w>
+      <h>310</h>
+    </coordinates>
+    <panel_attributes>layer=2
+fg=#FF0000
+lt=&lt;&lt;&lt;-
+*call service instance using load balancing*
+http://localhost:5555/api/statistics/summary</panel_attributes>
+    <additional_attributes>10.0;600.0;10.0;480.0;480.0;480.0;480.0;10.0;560.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>700</x>
+      <y>475</y>
+      <w>255</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>layer=2
+fg=#FF0000
+lt=&lt;&lt;&lt;-
+*call service instance using load balancing*
+http://localhost:5555/api/articleservice</panel_attributes>
+    <additional_attributes>470.0;210.0;250.0;210.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>590</x>
+      <y>245</y>
+      <w>110</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>customelement=
+// Text Elemnt
+// DB Symbol
+drawArc(0,0,width,height*2/5,0,180,true) fg=black bg=#222222 //Parameters (x, y, width, height, start, extent, open)
+drawArc(0,0,width,height*2/5,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawRectangle(0,(height+0.5)/5,width,(height)*3/5-1) fg=#929292 bg=#222222 //Parameters (x, y, width, height)
+drawLine(0,height/5,0,height*4/5)fg=black //Parameters (x1, y1, x2, y2) 
+drawLine(width,height/5,width,height*4/5)fg=black //Parameters (x1, y1, x2, y2) 
+drawArc(0,height*3/5,width,height*2/5,180,180,true) fg=black bg=#222222 //Parameters (x, y, width, height, start, extent, open)
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>700</x>
+      <y>70</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>symbol=artifact
+t_articleservice_author
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>640</x>
+      <y>215</y>
+      <w>15</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>group=3
+
+
+</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>700</x>
+      <y>105</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>symbol=artifact
+t_articleservice_category
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>700</x>
+      <y>140</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>symbol=artifact
+t_articleservice_news
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>700</x>
+      <y>175</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>symbol=artifact
+t_articleservice_news_author
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>450</x>
+      <y>90</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>symbol=artifact
+t_statistics_author
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>575</x>
+      <y>120</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>symbol=artifact
+t_paymentservice_author
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>450</x>
+      <y>160</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>symbol=artifact
+t_statistics_entry_author
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>695</x>
+      <y>55</y>
+      <w>120</w>
+      <h>155</h>
+    </coordinates>
+    <panel_attributes>lw=2
+ArticleService
+group=3
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>570</x>
+      <y>105</y>
+      <w>120</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lw=2
+PaymentService
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>450</x>
+      <y>125</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>symbol=artifact
+t_statistics_entry
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>935</x>
+      <y>725</y>
+      <w>35</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=[random]-</panel_attributes>
+    <additional_attributes>30.0;10.0;30.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>530</y>
+      <w>175</w>
+      <h>195</h>
+    </coordinates>
+    <panel_attributes>fg=#FF0000
+lt=&lt;&lt;&lt;-
+*fetch list of registered*
+*service instances*
+*periodically*</panel_attributes>
+    <additional_attributes>30.0;370.0;10.0;360.0;10.0;200.0;330.0;200.0;330.0;40.0;250.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>550</x>
+      <y>505</y>
+      <w>75</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=.
+</panel_attributes>
+    <additional_attributes>130.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>660</x>
+      <y>0</y>
+      <w>800</w>
+      <h>930</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;210.0;10.0;10.0;1140.0;10.0;1140.0;980.0;1570.0;980.0;1580.0;1840.0;620.0;1840.0;620.0;1710.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>355</x>
+      <y>750</y>
+      <w>35</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=[random]-</panel_attributes>
+    <additional_attributes>30.0;10.0;30.0;10.0</additional_attributes>
+  </element>
+</diagram>

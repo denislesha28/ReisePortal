@@ -1,0 +1,29 @@
+GET http://localhost:5555/api/articleservice/articles
+###
+GET http://localhost:5555/api/articleservice/articles?searchterm=Mozart
+###
+GET http://localhost:5555/api/articleservice/articles?categoryid=2
+###
+GET http://localhost:5555/api/articleservice/articles?authorid=1
+###
+GET http://localhost:5555/api/articleservice/articles/1
+###
+GET http://localhost:5555/api/articleservice/articles/2
+###
+GET http://localhost:5555/api/articleservice/articles/3
+###
+GET http://localhost:5555/api/articleservice/articles/4
+###
+GET http://localhost:5555/api/statistics/summary
+###
+GET http://localhost:5555/api/statistics/summary?authorname=Max
+###
+GET http://localhost:5555/api/statistics/summary?authorname=Martina
+###
+GET http://localhost:5555/api/statistics/summary?year=2022&month=01
+###
+GET http://localhost:5555/api/statistics/summary?year=2022&month=02
+###
+GET http://localhost:5555/api/statistics/summary?title=Der Alpenzoo Innsbruck
+###
+GET http://localhost:5555/api/statistics/summary?title=Der Wiener Prater
